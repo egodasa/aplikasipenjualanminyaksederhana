@@ -61,5 +61,6 @@
             <td><?=$beli?></td>
         </tr>
     </table>
-    <a class="btn btn-success" href="simpan">Simpan transaksi</a>
+    <a class="btn btn-success" href="simpan" <?php if(count($produk_beli) == 0) echo "disabled"; ?>>Simpan transaksi</a>
+    <a class="btn btn-primary" href="simpancetak" <?php if(count($produk_beli) == 0) echo "disabled"; ?>>Simpan dan Cetak Faktur</a>
 @endsection

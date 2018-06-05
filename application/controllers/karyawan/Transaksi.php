@@ -99,4 +99,18 @@ class Transaksi extends MY_Controller {
 		$mpdf->WriteHTML($html);
 		$mpdf->Output();
     }
+    public function simpancetak()
+    {
+        $id = $_SESSION['id_transaksi'];
+        $produk = $this->db->query("select a.nama_produk,a.harga,b.* from produk a inner join beli_tmp b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
+        $this->db->insert('transaksi', ['id_transaksi'=> $_SESSION['id_transaksi'], 'nama_pemesan'=> $_SESSION['nama_pemesan']]);
+        foreach($produk as $p){
+            $this->db->insert('detail_transaksi', ['id_transaksi'=> $p->id_transaksi,'id_produk'=> $p->id_produk, 'jumlah_beli' => $p->jumlah_beli]);
+        }
+        $this->db->where('id_transaksi', $_SESSION['id_transaksi'])->delete('beli_tmp');
+        $_SESSION['id_transaksi'] = microtime(TRUE)*10000;
+        $_SESSION['produk_beli'] = [];
+        $_SESSION['nama_pemesan'] = null;
+        $this->faktur($id);
+    }
 }
