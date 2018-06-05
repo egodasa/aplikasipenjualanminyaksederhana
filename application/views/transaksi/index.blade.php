@@ -18,7 +18,8 @@
 			<td>$a->id_transaksi</td>
 			<td>$a->nama_pemesan</td>
 			<td>$a->tgl_pembelian</td>						
-			<td><a class ='btn btn-info' href='transaksi/detail/$a->id_transaksi'>Detail</a></td>
+			<td><a class ='btn btn-primary' href='transaksi/detail/$a->id_transaksi'>Detail</a>
+            <a class ='btn btn-success' href='transaksi/faktur/$a->id_transaksi'>Faktur</a></td>
 		</tr>
 		";
 			

@@ -90,4 +90,13 @@ class Transaksi extends MY_Controller {
         $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join detail_transaksi b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
 		echo $this->view('transaksi/detail', $data);
 	}
+    public function faktur($id)
+    {
+        $data['detail'] = $this->db->where('id_transaksi', $id)->get('transaksi')->row();
+        $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join detail_transaksi b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
+        $html = $this->view('transaksi/faktur', $data);
+        $mpdf = new \Mpdf\Mpdf();
+		$mpdf->WriteHTML($html);
+		$mpdf->Output();
+    }
 }
