@@ -2,10 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produk extends MY_Controller {
+    function __construct()
+    {
+        parent::__construct();
+        $this->cekLogin('admin');
+    }
 	public function index()
 	{
         $data['produk'] = $this->db->query("select a.*, b.jenis from produk a inner join jenis_produk b on a.id_jenis_produk = b.id_jenis_produk")->result();
-		echo $this->view('produk/index', $data);
+		echo $this->view('admin/produk/index', $data);
 	}
 	public function hapus($id)
 	{
@@ -20,7 +25,7 @@ class Produk extends MY_Controller {
 			redirect('admin/produk');
 		}else{
 			$data['jenis_produk'] = $this->db->get('jenis_produk')->result();
-			echo $this->view('produk/tambah', $data);
+			echo $this->view('admin/produk/tambah', $data);
 		}
 	}
 	public function edit($id)
@@ -32,7 +37,7 @@ class Produk extends MY_Controller {
 		}else{
 			$data['detail'] = $this->db->where('id_produk', $id)->get('produk')->row();
 			$data['jenis_produk'] = $this->db->get('jenis_produk')->result();
-			echo $this->view('produk/edit', $data);
+			echo $this->view('admin/produk/edit', $data);
 		}
 	}
 }

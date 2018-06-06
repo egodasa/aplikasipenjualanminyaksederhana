@@ -21,13 +21,13 @@ class Transaksi extends MY_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
+        $this->cekLogin('karyawan');
     }
 	public function index()
 	{
         $this->load->database();
         $data['transaksi'] = $this->db->get('transaksi')->result();
-		echo $this->view('transaksi/index', $data);
+		echo $this->view('karyawan/transaksi/index', $data);
 	}
 	public function hapus()
 	{
@@ -63,7 +63,7 @@ class Transaksi extends MY_Controller {
 		}
         $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join beli_tmp b on a.id_produk = b.id_produk where b.id_transaksi = '".$_SESSION['id_transaksi']."'")->result();
         $data['produk'] = $this->db->where('stok <>', 0)->get('produk')->result();
-        echo $this->view('transaksi/tambah', $data);
+        echo $this->view('karyawan/transaksi/tambah', $data);
     }
     public function reset(){
         $this->db->where('id_transaksi', $_SESSION['id_transaksi'])->delete('beli_tmp');
@@ -88,13 +88,13 @@ class Transaksi extends MY_Controller {
 	{
 		$data['detail'] = $this->db->where('id_transaksi', $id)->get('transaksi')->row();
         $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join detail_transaksi b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
-		echo $this->view('transaksi/detail', $data);
+		echo $this->view('karyawan/transaksi/detail', $data);
 	}
     public function faktur($id)
     {
         $data['detail'] = $this->db->where('id_transaksi', $id)->get('transaksi')->row();
         $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join detail_transaksi b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
-        $html = $this->view('transaksi/faktur', $data);
+        $html = $this->view('karyawan/transaksi/faktur', $data);
         $mpdf = new \Mpdf\Mpdf();
 		$mpdf->WriteHTML($html);
 		$mpdf->Output();
