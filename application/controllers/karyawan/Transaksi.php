@@ -66,6 +66,10 @@ class Transaksi extends MY_Controller {
         echo $this->view('karyawan/transaksi/tambah', $data);
     }
     public function reset(){
+		$produk = $this->db->where('id_transaksi', $_SESSION['id_transaksi'])->get('beli_tmp')->result();
+		foreach($produk as $p){
+			$this->db->query("update produk set stok = stok + $p->jumlah_beli where id_produk = $p->id_produk");
+		}
         $this->db->where('id_transaksi', $_SESSION['id_transaksi'])->delete('beli_tmp');
         $_SESSION['id_transaksi'] = microtime(TRUE)*10000;
         $_SESSION['produk_beli'] = [];

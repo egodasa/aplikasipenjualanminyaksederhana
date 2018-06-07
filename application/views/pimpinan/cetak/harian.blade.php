@@ -60,8 +60,8 @@ Laporan Penjualan Harian <br/> Tanggal : <?=$hari.date("-m-Y")?>
 			<td>$no</td>
 			<td>$a->nama_produk</td>
 			<td>$a->jumlah_beli</td>
-			<td>$a->harga</td>			
-			<td>$a->total</td>	
+			<td>Rp ".number_format($a->harga,2,',','.')."</td>			
+			<td>Rp ".number_format($a->total,2,',','.')."</td>	
 		</tr>
 		";
 		$total += $a->total;
@@ -70,7 +70,7 @@ Laporan Penjualan Harian <br/> Tanggal : <?=$hari.date("-m-Y")?>
 	?>
 	<tr>
 		<td colspan=4 style="text-align:right;">Total</td>
-		<td><?=$total?></td>
+		<td><?="Rp ".number_format($total,2,',','.')?></td>
 	</tr>
 		</table>
 <br/>

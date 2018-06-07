@@ -4,8 +4,7 @@
 
 				<div class="col-xs-6 col-md-12">
 					<a class="thumbnail">
-						<img class="img-responsive" src="foto/text.png">
-					</a>
+<img class="img-responsive" src="{{ base_url() }}assets/images/poto.png">					</a>
 				</div>
 						
 		</div>
@@ -16,6 +15,7 @@
 			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/harian"><span class="glyphicon glyphicon-home"></span> Laporan Harian</a></li>
 			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/bulanan"><span class="glyphicon glyphicon-home"></span> Laporan Bulanan</a></li>
 			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/tahunan"><span class="glyphicon glyphicon-home"></span> Laporan Tahunan</a></li>
-			
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/produksi"><span class="glyphicon glyphicon-home"></span> Laporan Produksi</a></li>
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/stok"><span class="glyphicon glyphicon-home"></span> Laporan Stok</a></li>
 		</ul>
 	</div>

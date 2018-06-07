@@ -50,7 +50,7 @@
 		<tr>
 			<td>$no</td>
 			<td>$a->tgl_pembelian</td>		
-			<td>$a->total</td>	
+			<td>Rp ".number_format($a->total,2,',','.')."</td>	
 		</tr>
 		";
 		$no++;
@@ -59,7 +59,7 @@
 	?>
 	<tr>
 		<td colspan=2 style="text-align:right;">Total</td>
-		<td><?=$total?></td>
+		<td><?="Rp ".number_format($total,2,',','.')?></td>
 	</tr>
 		</table>
 @endsection

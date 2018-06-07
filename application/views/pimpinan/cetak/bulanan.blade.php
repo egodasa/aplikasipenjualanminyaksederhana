@@ -38,7 +38,7 @@ p{
 <p>JL.Letnan Jamhur No.45 Aro IV Korong <br/> Kota Solok</p>
 <hr/>
 <p>
-Laporan Penjualan Bulanan <br/> Bulan : <?=date('F', strtotime($bulan, date('m')))?>,Tahun : <?=date("Y")?>
+Laporan Penjualan Bulanan <br/> Bulan : <?=$nm_bulan?>,Tahun : <?=date("Y")?>
 </p>
 		<table>
 			<tr>
@@ -56,7 +56,7 @@ Laporan Penjualan Bulanan <br/> Bulan : <?=date('F', strtotime($bulan, date('m')
 		<tr>
 			<td>$no</td>
 			<td>$a->tgl_pembelian</td>		
-			<td>$a->total</td>	
+			<td>Rp ".number_format($a->total,2,',','.')."</td>	
 		</tr>
 		";
 		$no++;
@@ -65,7 +65,7 @@ Laporan Penjualan Bulanan <br/> Bulan : <?=date('F', strtotime($bulan, date('m')
 	?>
 	<tr>
 		<td colspan=2 style="text-align:right;">Total</td>
-		<td><?=$total?></td>
+		<td><?="Rp ".number_format($total,2,',','.')?></td>
 	</tr>
 		</table>
 <br/>

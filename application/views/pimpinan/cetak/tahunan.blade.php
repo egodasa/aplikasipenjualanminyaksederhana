@@ -56,7 +56,7 @@ Laporan Penjualan Tahunan <br/> Tahun : <?=$tahun?>
 		<tr>
 			<td>$no</td>
 			<td>$a->tgl_pembelian</td>		
-			<td>$a->total</td>	
+			<td>Rp ".number_format($a->total,2,',','.')."</td>	
 		</tr>
 		";
 		$no++;
@@ -65,7 +65,7 @@ Laporan Penjualan Tahunan <br/> Tahun : <?=$tahun?>
 	?>
 	<tr>
 	<td colspan=2 style="text-align:right;">Total</td>
-	<td><?=$total?></td>
+	<td><?="Rp ".number_format($total,2,',','.')?></td>
 	</tr>
 		</table>
 		<br/>

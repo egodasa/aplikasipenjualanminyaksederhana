@@ -25,7 +25,7 @@ class Login extends MY_Controller {
 	public function index()
 	{
         if(isset($_SESSION['username'])){
-            switch($_SESSION['username']){
+            switch($_SESSION['jenis_user']){
                 case "admin": 
                     redirect("admin");
                     break;
