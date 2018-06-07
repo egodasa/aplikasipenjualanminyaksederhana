@@ -18,11 +18,16 @@ class Jenisproduk extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+    function __construct()
+    {
+        parent::__construct();
+        $this->cekLogin('admin');
+    }
 	public function index()
 	{
         $this->load->database();
         $data['jenis'] = $this->db->get('jenis_produk')->result();
-		echo $this->view('jenis/index', $data);
+		echo $this->view('admin/jenis/index', $data);
 	}
     public function hapus($id)
 	{
@@ -36,7 +41,7 @@ class Jenisproduk extends MY_Controller {
 			$this->db->insert('jenis_produk', $data);
 			redirect('admin/jenisproduk');
 		}else{
-			echo $this->view('jenis/tambah');
+			echo $this->view('admin/jenis/tambah');
 		}
 	}
 	public function edit($id)
@@ -47,7 +52,7 @@ class Jenisproduk extends MY_Controller {
 			redirect('admin/jenisproduk');
 		}else{
 			$data['detail'] = $this->db->where('id_jenis_produk', $id)->get('jenis_produk')->row();
-			echo $this->view('jenis/edit', $data);
+			echo $this->view('admin/jenis/edit', $data);
 		}
 	}
 }

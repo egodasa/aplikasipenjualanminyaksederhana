@@ -4,7 +4,7 @@
 
 				<div class="col-xs-6 col-md-12">
 					<a class="thumbnail">
-						<img class="img-responsive" src="foto/text.png">
+						<img class="img-responsive" src="{{ base_url() }}assets/images/poto.png">
 					</a>
 				</div>
 						

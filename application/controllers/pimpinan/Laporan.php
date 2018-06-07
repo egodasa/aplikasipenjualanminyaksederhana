@@ -21,7 +21,8 @@ class Laporan extends MY_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
+        $this->cekLogin('pimpinan');
+        $this->db->query("set global sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';");
     }
 	public function index()
 	{
@@ -63,11 +64,23 @@ class Laporan extends MY_Controller {
 		echo $this->view('pimpinan/laporan/tahunan', $data);		
 		
 	}
+	public function produksi()
+	{
+		$data['produksi'] = $this->db->query("select a.nama_produk,b.jumlah from produk a join produksi b on a.id_produk = b.id_produk where month(waktu) between month(now()) - 3 and month(now())")->result();
+		echo $this->view('pimpinan/laporan/produksi', $data);	
+	}
+	
+	public function stok()
+	{
+		$data['produk'] = $this->db->query("select nama_produk,stok from produk")->result();
+		echo $this->view('pimpinan/laporan/stok', $data);
+	}
+	
 	public function detail($id)
 	{
 		$data['detail'] = $this->db->where('id_transaksi', $id)->get('transaksi')->row();
         $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join detail_transaksi b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
-		echo $this->view('laporan/detail', $data);
+		echo $this->view('pimpinan/laporan/detail', $data);
 	}
 	public function cetak($waktu)
 	{
@@ -78,23 +91,32 @@ class Laporan extends MY_Controller {
 				$data['hari'] = $this->input->get('hari');
 			}
 				$data['transaksi'] = $this->db->query("select b.nama_produk,sum(a.jumlah_beli) as jumlah_beli, b.harga, sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where day(c.tgl_pembelian) = ".$data['hari']." group by a.id_produk;")->result();
-				$html= $this->view('laporan/harian', $data);
+				$html= $this->view('pimpinan/cetak/harian', $data);
 			break;
 			case "bulanan":
 			$data['bulan'] = date('m');
 			if($this->input->get('bulan')){
 				$data['bulan'] = $this->input->get('bulan');
 			}
-				$data['transaksi'] = $this->db->query("select day(c.tgl_pembelian) as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where monthname(c.tgl_pembelian) = ".$data['bulan']." and year(c.tgl_pembelian) = year(now()) group by c.id_transaksi;")->result();
-				$html= $this->view('laporan/bulanan', $data);
+			$data['nm_bulan'] = $this->angkaKeBulan($data['bulan']);
+				$data['transaksi'] = $this->db->query("select day(c.tgl_pembelian) as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where month(c.tgl_pembelian) = ".$data['bulan']." and year(c.tgl_pembelian) = year(now()) group by c.id_transaksi;")->result();
+				$html= $this->view('pimpinan/cetak/bulanan', $data);
 			break;
 			case "tahunan":
 			$data['tahun'] = date('Y');
 			if($this->input->get('tahun')){
 				$data['tahun'] = $this->input->get('tahun');
 			}
-				$data['transaksi'] = $this->db->query("select monthname(c.tgl_pembelian) as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where year(c.tgl_pembelian) = ".$data['tahun']." group by monthname(c.id_transaksi)")->result();
-				$html= $this->view('laporan/tahunan', $data);
+                $data['transaksi'] = $this->db->query("select monthname(c.tgl_pembelian) as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where year(c.tgl_pembelian) = ".$data['tahun']." group by monthname(c.id_transaksi)")->result();
+				$html= $this->view('pimpinan/cetak/tahunan', $data);
+			break;
+			case "produksi":
+				$data['produksi'] = $this->db->query("select a.nama_produk,b.jumlah from produk a join produksi b on a.id_produk = b.id_produk where month(waktu) between month(now()) - 3 and month(now())")->result();
+				$html= $this->view('pimpinan/cetak/produksi', $data);	
+			break;
+			case "stok" :
+				$data['stok'] = $this->db->query("select nama_produk,stok from produk")->result();
+				$html = $this->view('pimpinan/cetak/stok', $data);
 			break;
 		}
 		$mpdf = new \Mpdf\Mpdf();
