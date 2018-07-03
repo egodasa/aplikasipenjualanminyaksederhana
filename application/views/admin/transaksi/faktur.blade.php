@@ -26,16 +26,15 @@ p{
 }
 </style>
 <div style="width:75%;float: left;">
-   
-    <p style="text-align: center;font-size: 25px;"><b>KELOMPOK TANI DAN IKM AGRIBISNIS KOTA SOLOK</b></p>
-	
+    <img src="<?=base_url()."assets/images/bank_indonesia.gif"?>" width="60" height="60" style="float:left;">
+    <p style="text-align: center;font-size: 25px;"><b>WUBI</b><br/><span style="font-size: 15px;">WIRAUSAHA BANK INDONESIA</span></p>
 </div>
 <div style="width:25%;float: right;">
     <p>No Faktur : <?=$detail->id_transaksi?></p>
     <p>Nama Pembeli : <?=$detail->nama_pemesan?></p>
 </div>
 <div style="clear: both;"></div>
-<p style="text-align:left;"></p>
+<p style="text-align:left;">GNNT - GERAKAN NASIONAL NON TUNAI</p>
 <table>
     <tr>
         <th>No</th>
@@ -63,8 +62,10 @@ p{
 </table>
 <br/>
 <br/>
-<p style ="text-align:right;">Solok, <?=date("d-m-Y")?></p><br/>
-<div style="width:80%; float: right;text-align: center;">Hormat Kami<br/><br/>
+<br/>
+<div style="width:50%; float: left;text-align: center;">
+Penerima<br/><br/>...........
 </div>
-<div style="width:80%; float: right;text-align: center;">............<br/><br/>
+<div style="width:50%; float: right;text-align: center;">
+Hormat Kami<br/><br/>...........
 </div>

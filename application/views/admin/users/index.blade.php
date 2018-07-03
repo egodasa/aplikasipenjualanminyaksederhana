@@ -3,7 +3,7 @@
 @section('header','KELOMPOK TANI DAN IKM AGRIBISNIS')
 @section('content')
 <h2>Daftar User</h2>
-<a class="btn btn-info" href="{{ base_url() }}admin/users/tambah">Tambah Data</a>
+<a class="btn btn-info" href="{{ base_url() }}admin/users/tambah">Tambah Data <span class='glyphicon glyphicon-plus'></span></a>
 		<table class="table table-hover">
 			<tr>
 				<th>username</th>
@@ -22,7 +22,7 @@
         if($a->status_user == 1) echo "<td>Aktif</td>";
         else echo "<td>Tidak Aktif</td>";
         echo "<td>
-			<a class='btn btn-danger' href='users/hapus/$a->id'>Hapus</a></td>
+			<a class='btn btn-danger' href='users/hapus/$a->id'>Hapus <span class='glyphicon glyphicon-trash'></span></a></td>
 		</tr>
 		";
 			

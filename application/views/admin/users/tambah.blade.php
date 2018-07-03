@@ -24,7 +24,7 @@
 			<option value="Pimpinan">Pimpinan</option>
 		</select>
 	</div>
-		<button type="submit" class='btn btn-info'>Tambah User</button>
+		<button type="submit" class='btn btn-info'>Tambah User <span class='glyphicon glyphicon-plus'></span></button>
 		</form>
 @endsection
 

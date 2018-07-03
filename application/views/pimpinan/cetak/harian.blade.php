@@ -69,7 +69,7 @@ Laporan Penjualan Harian <br/> Tanggal : <?=$hari.date("-m-Y")?>
 	}
 	?>
 	<tr>
-		<td colspan=4 style="text-align:right;">Total</td>
+		<td colspan=4 style="text-align:right;">Total Penjualan</td>
 		<td><?="Rp ".number_format($total,2,',','.')?></td>
 	</tr>
 		</table>

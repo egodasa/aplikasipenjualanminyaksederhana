@@ -66,7 +66,7 @@ class Laporan extends MY_Controller {
 	}
 	public function produksi()
 	{
-		$data['produksi'] = $this->db->query("select a.nama_produk,b.jumlah from produk a join produksi b on a.id_produk = b.id_produk where month(waktu) between month(now()) - 3 and month(now())")->result();
+		$data['produksi'] = $this->db->query("select a.nama_produk,sum(b.jumlah) as jumlah from produk a join produksi b on a.id_produk = b.id_produk where month(waktu) between month(now()) - 3 and month(now()) group by b.id_produk")->result();
 		echo $this->view('pimpinan/laporan/produksi', $data);	
 	}
 	

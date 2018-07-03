@@ -7,6 +7,6 @@
 		<label for="jenis">Jenis</label>
 		<input class="form-control" name="jenis" type="text" />
 	</div>
-		<button type="submit" class='btn btn-info'>Tambah Jenis Produk</button>
+		<button type="submit" class='btn btn-info'>Tambah Jenis Produk <span class='glyphicon glyphicon-plus'></span></button>
 		</form>
 	@endsection

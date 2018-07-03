@@ -29,10 +29,10 @@ class Login extends MY_Controller {
                 case "admin": 
                     redirect("admin");
                     break;
-                case "admin": 
+                case "karyawan": 
                     redirect("karyawan/transaksi");
                     break;
-                case "admin": 
+                case "pimpinan": 
                     redirect("pimpinan/laporan");
                     break;
             }

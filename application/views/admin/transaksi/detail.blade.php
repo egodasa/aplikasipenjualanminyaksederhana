@@ -1,4 +1,4 @@
-@extends('template.layout-karyawan')
+@extends('template.layout-admin')
 @section('judul','Detail Transaksi')
 @section('header','KELOMPOK TANI DAN IKM AGRIBISNIS')
 @section('content')
@@ -38,5 +38,5 @@
             <td><?=$beli?></td>
         </tr>
     </table>
-    <a class="btn btn-success" href="{{ base_url() }}karyawan/transaksi">Kembali <span class="glyphicon glyphicon-eject"></span> </a>
+    <a class="btn btn-success" href="{{ base_url() }}admin/transaksi">Kembali <span class="glyphicon glyphicon-eject"></span> </a>
 @endsection

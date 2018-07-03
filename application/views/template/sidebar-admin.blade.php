@@ -13,9 +13,10 @@
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="{{ base_url() }}admin"><span class="glyphicon glyphicon-home"></span>  Beranda</a></li>				
-			<li class="active"><a href="{{ base_url() }}admin/users"><span class="glyphicon glyphicon-home"></span>  Kelola User</a></li>				
-			<li class="active"><a href="{{ base_url() }}admin/produk"><span class="glyphicon glyphicon-home"></span>  Kelola Produk</a></li>		
-			<li class="active"><a href="{{ base_url() }}admin/jenisproduk"><span class="glyphicon glyphicon-home"></span>  Kelola Jenis Produk</a></li>		
+			<li class="active"><a href="{{ base_url() }}admin/users"><span class="glyphicon glyphicon-user"></span>  Kelola User</a></li>				
+			<li class="active"><a href="{{ base_url() }}admin/produk"><span class="glyphicon glyphicon-th-large"></span>  Kelola Produk</a></li>		
+			<li class="active"><a href="{{ base_url() }}admin/jenisproduk"><span class="glyphicon glyphicon-th-large"></span>  Kelola Jenis Produk</a></li>
+					
 			
 		</ul>
 	</div>

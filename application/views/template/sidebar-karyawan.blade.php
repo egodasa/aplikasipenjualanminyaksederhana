@@ -11,8 +11,9 @@
 
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="{{ base_url() }}karyawan/transaksi"><span class="glyphicon glyphicon-home"></span>  Daftar Transaksi</a></li>				
-			<li class="active"><a href="{{ base_url() }}karyawan/transaksi/tambah"><span class="glyphicon glyphicon-home"></span>  Entry Transaksi</a></li>		
+			<li class="active"><a href="{{ base_url() }}karyawan/transaksi"><span class="glyphicon glyphicon-list"></span>  Daftar Transaksi</a></li>				
+			<li class="active"><a href="{{ base_url() }}karyawan/transaksi/tambah"><span class="glyphicon glyphicon-plus"></span>  Entry Transaksi</a></li>		
+			
 			
 		</ul>
 	</div>

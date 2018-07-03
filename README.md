@@ -13,5 +13,3 @@
 1. Kelola barang, jenis barang dan user
 1. Cetak faktur penjualan
 1. Cetak laporan harian, bulanan dan tahunan
-1. Cetak laporan produksi (per 3 bulan)
-1. Cetak laporan stok barang

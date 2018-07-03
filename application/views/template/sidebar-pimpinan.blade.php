@@ -11,11 +11,11 @@
 
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="{{ base_url() }}pimpinan/laporan"><span class="glyphicon glyphicon-home"></span> Laporan Penjualan</a></li>				
-			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/harian"><span class="glyphicon glyphicon-home"></span> Laporan Harian</a></li>
-			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/bulanan"><span class="glyphicon glyphicon-home"></span> Laporan Bulanan</a></li>
-			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/tahunan"><span class="glyphicon glyphicon-home"></span> Laporan Tahunan</a></li>
-			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/produksi"><span class="glyphicon glyphicon-home"></span> Laporan Produksi</a></li>
-			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/stok"><span class="glyphicon glyphicon-home"></span> Laporan Stok</a></li>
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan"><span class="glyphicon glyphicon-book"></span> Laporan Penjualan</a></li>				
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/harian"><span class="glyphicon glyphicon-book"></span> Laporan Harian</a></li>
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/bulanan"><span class="glyphicon glyphicon-book"></span> Laporan Bulanan</a></li>
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/tahunan"><span class="glyphicon glyphicon-book"></span> Laporan Tahunan</a></li>
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/produksi"><span class="glyphicon glyphicon-book"></span> Laporan Produksi</a></li>
+			<li class="active"><a href="{{ base_url() }}pimpinan/laporan/stok"><span class="glyphicon glyphicon-book"></span> Laporan Stok</a></li>
 		</ul>
 	</div>

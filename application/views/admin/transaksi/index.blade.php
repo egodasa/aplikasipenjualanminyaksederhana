@@ -1,7 +1,8 @@
-@extends('template.layout-pimpinan')
+@extends('template.layout-admin')
 @section('judul','Daftar Transaksi')
 @section('header','KELOMPOK TANI DAN IKM AGRIBISNIS')
 @section('content')
+<h2>Daftar Transaksi</h2>
 		<table class="table table-hover">
 			<tr>
 				<th>id transaksi</th>
@@ -18,7 +19,8 @@
 			<td>$a->id_transaksi</td>
 			<td>$a->nama_pemesan</td>
 			<td>$a->tgl_pembelian</td>						
-			<td><a class ='btn btn-info' href='laporan/detail/$a->id_transaksi'>Detail <span class='glyphicon glyphicon-folder-open'></span></a></td>
+			<td><a class ='btn btn-primary' href='transaksi/detail/$a->id_transaksi'>Detail <span class='glyphicon glyphicon-folder-open'></span></a>
+           
 		</tr>
 		";
 			
