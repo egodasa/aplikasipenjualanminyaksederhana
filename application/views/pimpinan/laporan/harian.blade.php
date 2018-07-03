@@ -10,23 +10,7 @@
 		<label>Pilih hari</label>
 	</div>
 	<div class="col-xs-4">
-		<select name="hari" placeholder="pilih hari" class="form-control">
-		<?php foreach($daftar_hari as $hari): ?>
-			<?php if($_GET['hari']):  ?>
-				<?php if($_GET['hari'] == date('d')):  ?>
-					<option value="<?=$hari->hari?>" selected><?=$hari->hari?></option>
-				<?php else: ?>
-					<option value="<?=$hari->hari?>"><?=$hari->hari?></option>
-				<?php endif; ?>
-			<?php else: ?>
-				<?php if($hari->hari == date('d')):  ?>
-					<option value="<?=$hari->hari?>" selected><?=$hari->hari?></option>
-				<?php else: ?>
-					<option value="<?=$hari->hari?>"><?=$hari->hari?></option>
-				<?php endif; ?>
-			<?php endif; ?>
-		<?php endforeach; ?>
-		</select>
+        <input type="date" class="form-control" name="hari">
 	</div>
 	<div class="col-xs-6">
 		<button href="{{ base_url() }}pimpinan/laporan/cetak/harian" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-print"></span> Tampilkan</button>
