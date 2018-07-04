@@ -32,7 +32,14 @@ class Produk extends MY_Controller {
 	{
 		if($this->input->post()){
 			$data = $this->input->post();
-			$this->db->where('id_produk', $id)->update('produk', $data);
+            $produk = array(
+                'nama_produk'   => $data['nama_produk'],
+                'id_jenis_produk'   => $data['id_jenis_produk'],
+                'stok'   => $data['stok'] + $data['stok_lama'],
+                'harga'   => $data['harga']
+            );
+            $this->db->insert('produksi', array('id_produk' => $id, 'jumlah' => $data['stok']));
+			$this->db->where('id_produk', $id)->update('produk', $produk);
 			redirect('admin/produk');
 		}else{
 			$data['detail'] = $this->db->where('id_produk', $id)->get('produk')->row();

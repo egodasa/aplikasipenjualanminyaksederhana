@@ -33,12 +33,12 @@ class Laporan extends MY_Controller {
 	}
 	public function harian()
 	{
-		$data['hari'] = date('d');
 		if($this->input->get('hari')){
 			$data['hari'] = $this->input->get('hari');
-		}
-		$data['daftar_hari'] = $this->db->query("select day(tgl_pembelian) as hari from transaksi where year(tgl_pembelian) = year(now()) and month(tgl_pembelian) = month(now()) group by day(tgl_pembelian)")->result();
-		$data['transaksi'] = $this->db->query("select b.nama_produk,sum(a.jumlah_beli) as jumlah_beli, b.harga, sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where day(c.tgl_pembelian) = ".$data['hari']." and month(c.tgl_pembelian) = month(now()) and year(c.tgl_pembelian) = year(now()) group by a.id_produk;")->result();
+            $data['transaksi'] = $this->db->query("select b.nama_produk,sum(a.jumlah_beli) as jumlah_beli, b.harga, sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where date(c.tgl_pembelian) = '".$data['hari']."' group by a.id_produk;")->result();
+		}else{
+            $data['transaksi'] = $this->db->query("select b.nama_produk,sum(a.jumlah_beli) as jumlah_beli, b.harga, sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where date(c.tgl_pembelian) = date(now()) group by a.id_produk;")->result();
+        }
 		echo $this->view('pimpinan/laporan/harian', $data);
 	}
 	
@@ -86,11 +86,12 @@ class Laporan extends MY_Controller {
 	{
 		switch($waktu){
 			case "harian":
-			$data['hari'] = date('d');
-			if($this->input->get('hari')){
-				$data['hari'] = $this->input->get('hari');
-			}
-				$data['transaksi'] = $this->db->query("select b.nama_produk,sum(a.jumlah_beli) as jumlah_beli, b.harga, sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where day(c.tgl_pembelian) = ".$data['hari']." group by a.id_produk;")->result();
+                if($this->input->get('hari')){
+                    $data['hari'] = $this->input->get('hari');
+                    $data['transaksi'] = $this->db->query("select b.nama_produk,sum(a.jumlah_beli) as jumlah_beli, b.harga, sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where date(c.tgl_pembelian) = '".$data['hari']."' group by a.id_produk;")->result();
+                }else{
+                    $data['transaksi'] = $this->db->query("select b.nama_produk,sum(a.jumlah_beli) as jumlah_beli, b.harga, sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where date(c.tgl_pembelian) = date(now()) group by a.id_produk;")->result();
+                }
 				$html= $this->view('pimpinan/cetak/harian', $data);
 			break;
 			case "bulanan":

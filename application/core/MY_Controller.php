@@ -11,6 +11,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         $this->blade = new Blade($this->views, $this->cache);  //buat objek blade
 		//setlocale(LC_TIME,'id_ID');
+        date_default_timezone_set("Indonesia/Jakarta");
     }
     public function view($name, $data = []){
 		return $this->blade->view()->make($name, $data)->render();

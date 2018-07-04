@@ -38,7 +38,15 @@ p{
 <p>JL.Letnan Jamhur No.45 Aro IV Korong <br/> Kota Solok</p>
 <hr/>
 <p>
-Laporan Penjualan Harian <br/> Tanggal : <?=$hari.date("-m-Y")?>
+<?php
+    $waktu = null;
+    if(isset($_GET['hari'])){
+        $waktu = strtotime($_GET['hari']);
+    }else{
+        $waktu = date("d M Y");
+    }
+?>
+Laporan Penjualan Harian <br/> Tanggal : <?=date("d F Y",$waktu)?>
 </p>
 
 		<table>

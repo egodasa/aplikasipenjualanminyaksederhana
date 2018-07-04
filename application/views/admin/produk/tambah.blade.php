@@ -8,7 +8,7 @@
 		<input class="form-control" name="nama_produk" type="text" />
 	</div>
 	<div class="form-group">	
-		<label for="id_jenis_produk">Id Jenis Produk</label>
+		<label for="id_jenis_produk">Jenis Produk</label>
 		<select class="form-control"  name="id_jenis_produk">
 			<?php
 		foreach($jenis_produk as $a){

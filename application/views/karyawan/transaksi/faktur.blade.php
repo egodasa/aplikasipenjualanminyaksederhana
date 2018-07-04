@@ -24,6 +24,11 @@ h1{
 p{
 	text-align: center;
 }
+.ttd{
+	width: 25%;
+	text-align:center;
+	float: right;
+}
 </style>
 <div style="width:75%;float: left;">
    
@@ -63,8 +68,11 @@ p{
 </table>
 <br/>
 <br/>
-<p style ="text-align:right;">Solok, <?=date("d-m-Y")?></p><br/>
-<div style="width:80%; float: right;text-align: center;">Hormat Kami<br/><br/>
-</div>
-<div style="width:80%; float: right;text-align: center;">............<br/><br/>
+<div class="ttd">
+<p>Solok, <?=date("d-m-Y")?></p>
+<p>Hormat Kami
+</p>
+<br/>
+<p>.............
+</p>
 </div>
