@@ -13,6 +13,7 @@
 				<th>No</th>
 				<th>Nama Produk</th>
 				<th>Jumlah</th>
+				<th>Waktu</th>
 				
 			</tr>
 
@@ -25,6 +26,7 @@
 			<td>$no</td>
 			<td>$a->nama_produk</td>
 			<td>$a->jumlah</td>
+			<td>$a->waktu</td>
 			
 		</tr>
 		";

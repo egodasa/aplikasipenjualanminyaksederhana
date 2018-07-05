@@ -46,6 +46,7 @@ Laporan Produksi Triwulan <br/>
 				<th>No</th>
 				<th>Nama Produk</th>
 				<th>Jumlah</th>
+				<th>Waktu</th>
 				
 				
 			</tr>
@@ -59,6 +60,7 @@ Laporan Produksi Triwulan <br/>
 			<td>$no</td>
 			<td>$a->nama_produk</td>
 			<td>$a->jumlah</td>			
+			<td>$a->waktu</td>			
 		</tr>
 		";
 		

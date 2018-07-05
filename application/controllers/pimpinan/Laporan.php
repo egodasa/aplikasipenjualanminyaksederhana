@@ -66,7 +66,7 @@ class Laporan extends MY_Controller {
 	}
 	public function produksi()
 	{
-		$data['produksi'] = $this->db->query("select a.nama_produk,sum(b.jumlah) as jumlah from produk a join produksi b on a.id_produk = b.id_produk where month(waktu) between month(now()) - 3 and month(now()) group by b.id_produk")->result();
+		$data['produksi'] = $this->db->query("select a.id_produksi,b.nama_produk,a.jumlah,date_format(a.waktu, '%e %M %Y %H:%i:%S') as waktu from produksi a join produk b on a.id_produk = b.id_produk where month(a.waktu) between month(now()) - 3 and month(now())")->result();
 		echo $this->view('pimpinan/laporan/produksi', $data);	
 	}
 	
@@ -108,11 +108,11 @@ class Laporan extends MY_Controller {
 			if($this->input->get('tahun')){
 				$data['tahun'] = $this->input->get('tahun');
 			}
-                $data['transaksi'] = $this->db->query("select monthname(c.tgl_pembelian) as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where year(c.tgl_pembelian) = ".$data['tahun']." group by monthname(c.id_transaksi)")->result();
+                $data['transaksi'] = $this->db->query("select monthname(c.tgl_pembelian) as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where year(c.tgl_pembelian) = ".$data['tahun'])->result();
 				$html= $this->view('pimpinan/cetak/tahunan', $data);
 			break;
 			case "produksi":
-				$data['produksi'] = $this->db->query("select a.nama_produk,b.jumlah from produk a join produksi b on a.id_produk = b.id_produk where month(waktu) between month(now()) - 3 and month(now())")->result();
+				$data['produksi'] = $this->db->query("select a.id_produksi,b.nama_produk,a.jumlah,date_format(a.waktu, '%e %M %Y %H:%i:%S') as waktu from produksi a join produk b on a.id_produk = b.id_produk where month(a.waktu) between month(now()) - 3 and month(now())")->result();
 				$html= $this->view('pimpinan/cetak/produksi', $data);	
 			break;
 			case "stok" :
