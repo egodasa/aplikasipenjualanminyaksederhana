@@ -34,7 +34,6 @@
             <th>Nama produk</th>
             <th>Harga</th>
             <th>Jumlah</th>
-            <th>Total</th>
             <th>Aksi</th>
         </tr>
         <?php foreach($produk_beli as $p): ?>
@@ -52,12 +51,12 @@
                 </form>
             </td>
         </tr>
-        <?php $harga += $p->total_bayar; ?>
+        <?php $harga += $p->jumlah_beli*$p->harga; ?>
         <?php $beli += $p->jumlah_beli; ?>
         <?php $no++; ?>
         <?php endforeach; ?>
         <tr>
-            <td colspan=3>Total bayar</td>
+            <td colspan=2>Total bayar</td>
             <td><?="Rp ".number_format($harga,2,',','.')?></td>
             <td><?=$beli?></td>
         </tr>
