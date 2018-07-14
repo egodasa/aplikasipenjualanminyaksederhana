@@ -49,7 +49,7 @@ class Laporan extends MY_Controller {
 			$data['bulan'] = $this->input->get('bulan');
 		}
 		$data['daftar_bulan'] = $this->db->query("select month(tgl_pembelian) as bulan, monthname(tgl_pembelian) as nm_bulan from transaksi where year(tgl_pembelian) = year(now()) group by month(tgl_pembelian)")->result();
-		$data['transaksi'] = $this->db->query("select day(c.tgl_pembelian) as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where month(c.tgl_pembelian) = ".$data['bulan']." and year(c.tgl_pembelian) = year(now()) group by c.id_transaksi;")->result();
+		$data['transaksi'] = $this->db->query("select date_format(c.tgl_pembelian, '%e %M %Y') as tgl_pembelian,sum(a.jumlah_beli*b.harga) as total from detail_transaksi a join produk b on a.id_produk = b.id_produk right join transaksi c on a.id_transaksi = c.id_transaksi where month(c.tgl_pembelian) = ".$data['bulan']." and year(c.tgl_pembelian) = year(now()) group by c.id_transaksi;")->result();
 		echo $this->view('pimpinan/laporan/bulanan', $data);
 	}
 	
