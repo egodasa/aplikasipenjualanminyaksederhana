@@ -19,14 +19,14 @@ class Transaksi extends MY_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	function __construct()
-    {
-        parent::__construct();
-        $this->cekLogin('karyawan');
-    }
+  {
+      parent::__construct();
+      $this->cekLogin('karyawan');
+  }
 	public function index()
 	{
-        $this->load->database();
-        $data['transaksi'] = $this->db->get('transaksi')->result();
+    $this->load->database();
+    $data['transaksi'] = $this->db->get('transaksi')->result();
 		echo $this->view('karyawan/transaksi/index', $data);
 	}
 	public function hapus()
@@ -96,12 +96,12 @@ class Transaksi extends MY_Controller {
 	}
     public function faktur($id)
     {
-        $data['detail'] = $this->db->where('id_transaksi', $id)->get('transaksi')->row();
-        $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join detail_transaksi b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
-        $html = $this->view('karyawan/transaksi/faktur', $data);
-        $mpdf = new \Mpdf\Mpdf();
-		$mpdf->WriteHTML($html);
-		$mpdf->Output();
+      $data['detail'] = $this->db->where('id_transaksi', $id)->get('transaksi')->row();
+      $data['produk_beli'] = $this->db->query("select a.nama_produk,a.harga,a.stok,a.status_produk,b.* from produk a inner join detail_transaksi b on a.id_produk = b.id_produk where b.id_transaksi = '".$id."'")->result();
+      $html = $this->view('karyawan/transaksi/faktur', $data);
+      $mpdf = new \Mpdf\Mpdf();
+		  $mpdf->WriteHTML($html);
+		  $mpdf->Output();
     }
     public function simpancetak()
     {
